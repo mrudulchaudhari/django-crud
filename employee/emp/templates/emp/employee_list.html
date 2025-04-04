@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h2>Employee List</h2>
-        <a href="{% url 'employee-create' %}" class="btn btn-primary">Add New Employee</a>
+        {% comment %} <a href="{% url 'employee-create' %}" class="btn btn-primary">Add New Employee</a> {% endcomment %}
     </div>
     <div class="card-body">
         {% if employees %}
