@@ -1,0 +1,46 @@
+{% extends 'emp/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2>Employee List</h2>
+        <a href="{% url 'employee-create' %}" class="btn btn-primary">Add New Employee</a>
+    </div>
+    <div class="card-body">
+        {% if employees %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Birth Date</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.employee_id }}</td>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.phone_number }}</td>
+                        <td>{{ employee.birth_date }}</td>
+                        <td>{{ employee.get_role_display }}</td>
+                        <td>
+                            <a href="{% url 'employee-detail' employee.employee_id %}" class="btn btn-sm btn-info">View</a>
+                            <a href="{% url 'employee-update' employee.employee_id %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'employee-delete' employee.employee_id %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info">No employees found. Add a new employee to get started.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

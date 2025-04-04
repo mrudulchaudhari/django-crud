@@ -1,0 +1,36 @@
+{% extends 'emp/base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Employee Details</h2>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Employee ID:</div>
+            <div class="col-md-9">{{ employee.employee_id }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Name:</div>
+            <div class="col-md-9">{{ employee.name }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Phone Number:</div>
+            <div class="col-md-9">{{ employee.phone_number }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Birth Date:</div>
+            <div class="col-md-9">{{ employee.birth_date }}</div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3 fw-bold">Role:</div>
+            <div class="col-md-9">{{ employee.get_role_display }}</div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'employee-list' %}" class="btn btn-secondary">Back to List</a>
+        <a href="{% url 'employee-update' employee.employee_id %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'employee-delete' employee.employee_id %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endblock %}
