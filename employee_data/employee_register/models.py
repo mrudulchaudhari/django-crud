@@ -1,17 +1,19 @@
 from django.db import models
 
 # Create your models here.
+# employee_register/models.py
 class Employee(models.Model):
-    ROLE_CHOICE = [
+    ROLE_CHOICES = [
         ('IT', 'IT'),
         ('Developer', 'Developer'),
         ('Admin', 'Admin'),
         ('Accounts', 'Accounts'),
     ]
-    empid = models.CharField(max_length=4, primary_key=True)
-    name = models.CharField(max_length = 60)
-    number = models.CharField(max_length=10, blank= False)
-    role = models.CharField(max_length=20, choices = ROLE_CHOICE)
+    
+    empid = models.CharField(max_length=10, primary_key=True)  # This should be emp_code, not empid
+    name = models.CharField(max_length=100)
+    number = models.CharField(max_length=15)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
 
     def __str__(self):
         return f"{self.name} ({self.empid})"
